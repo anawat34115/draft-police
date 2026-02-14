@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Police Care: ศูนย์ข้อมูลและสนับสนุนการใช้งาน</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Sarabun', sans-serif; }
+        
+        /* Police Theme */
+        .bg-police-red { background-color: #8B0000; }
+        .text-police-red { color: #8B0000; }
+        .bg-police-dark { background-color: #1a202c; }
+        .border-police-red { border-color: #8B0000; }
+        
+        /* Smooth Scroll */
+        html { scroll-behavior: smooth; }
+
+        /* Animation */
+        .page-section { display: none; animation: fadeIn 0.4s ease-out; }
+        .page-section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Feature Card Hover */
+        .feature-card { transition: all 0.3s ease; }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(139, 0, 0, 0.1); }
+
+        /* Tab Active State */
+        .tab-active { background-color: #8B0000; color: white; border-color: #8B0000; }
+        .tab-inactive { background-color: white; color: #4a5568; border-color: #e2e8f0; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen bg-gray-50 text-slate-800">
+
+    <!-- ========================================= -->
+    <!-- HEADER: Navigation                        -->
+    <!-- ========================================= -->
+    <header class="bg-white sticky top-0 z-50 shadow-md border-t-4 border-police-red">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="showPage('landing')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Emblem_of_the_Royal_Thai_Police.svg/1200px-Emblem_of_the_Royal_Thai_Police.svg.png" alt="RTP" class="h-10 w-auto">
+                <div class="flex flex-col">
+                    <span class="font-extrabold text-police-red text-lg leading-none tracking-tight">POLICE CARE</span>
+                    <span class="text-[10px] text-gray-500 font-bold tracking-wider">INFORMATION PORTAL</span>
+                </div>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center gap-1">
+                <button onclick="showPage('landing')" class="px-4 py-2 text-sm font-bold text-gray-700 hover:text-police-red rounded-lg hover:bg-red-50 transition">หน้าหลัก</button>
+                <button onclick="showPage('dictionary')" class="px-4 py-2 text-sm font-bold text-gray-700 hover:text-police-red rounded-lg hover:bg-red-50 transition">คลังคำศัพท์ (Web)</button>
+                <button onclick="showPage('manual')" class="px-4 py-2 text-sm font-bold text-gray-700 hover:text-police-red rounded-lg hover:bg-red-50 transition">คู่มือการใช้งาน</button>
+                <a href="#download" class="ml-2 bg-police-red text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-red-800 transition shadow-md">
+                    <i class="fa-solid fa-download mr-1"></i> ดาวน์โหลดแอป
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Btn -->
+            <button onclick="toggleMobileMenu()" class="md:hidden text-police-red text-xl"><i class="fa-solid fa-bars"></i></button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <nav id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="container mx-auto px-6 py-4 space-y-2">
+                <button onclick="showPage('landing'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 text-sm font-bold text-gray-700 hover:text-police-red hover:bg-red-50 rounded-lg transition">หน้าหลัก</button>
+                <button onclick="showPage('dictionary'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 text-sm font-bold text-gray-700 hover:text-police-red hover:bg-red-50 rounded-lg transition">คลังคำศัพท์ (Web)</button>
+                <button onclick="showPage('manual'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 text-sm font-bold text-gray-700 hover:text-police-red hover:bg-red-50 rounded-lg transition">คู่มือการใช้งาน</button>
+                <a href="https://apps.apple.com" target="_blank" class="block w-full text-left ml-2 bg-police-red text-white px-5 py-3 rounded-full text-sm font-bold hover:bg-red-800 transition shadow-md">
+                    <i class="fa-solid fa-download mr-1"></i> ดาวน์โหลดแอป
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ========================================= -->
+    <!-- PAGE 1: LANDING (Showcase)                -->
+    <!-- ========================================= -->
+    <main id="landing" class="page-section active flex-grow">
+        <!-- Hero: Impactful Visual -->
+        <section class="bg-white relative overflow-hidden">
+            <div class="container mx-auto px-6 py-16 lg:py-24 flex flex-col-reverse lg:flex-row items-center gap-12">
+                
+                <div class="lg:w-1/2 z-10">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-100 text-police-red text-xs font-bold mb-6 border border-red-200">
+                        <span class="relative flex h-2 w-2">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
+                        </span>
+                        เปิดใช้งานอย่างเป็นทางการ
+                    </div>
+                    <h1 class="text-4xl lg:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
+                        ช่องทางแจ้งความ<br>
+                        <span class="text-police-red">สำหรับผู้พิการทางการได้ยิน</span>
+                    </h1>
+                    <p class="text-lg text-gray-500 mb-8 leading-relaxed">
+                        แอปพลิเคชัน Police Care เชื่อมต่อท่านกับเจ้าหน้าที่ตำรวจและล่ามภาษามือได้ทันที รองรับการแจ้งเหตุฉุกเฉิน แจ้งความออนไลน์ และขอความช่วยเหลือ 24 ชั่วโมง
+                    </p>
+                    <div class="flex flex-wrap gap-4" id="download">
+                        <a href="https://apps.apple.com" target="_blank" class="bg-gray-900 text-white px-6 py-3 rounded-xl flex items-center gap-3 hover:bg-black transition shadow-lg w-full sm:w-auto justify-center">
+                            <i class="fa-brands fa-apple text-2xl"></i>
+                            <div class="text-left leading-tight">
+                                <span class="text-[10px] block opacity-70">Download on</span>
+                                <span class="font-bold">App Store</span>
+                            </div>
+                        </a>
+                        <a href="https://play.google.com" target="_blank" class="bg-gray-900 text-white px-6 py-3 rounded-xl flex items-center gap-3 hover:bg-black transition shadow-lg w-full sm:w-auto justify-center">
+                            <i class="fa-brands fa-google-play text-xl"></i>
+                            <div class="text-left leading-tight">
+                                <span class="text-[10px] block opacity-70">GET IT ON</span>
+                                <span class="font-bold">Google Play</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2 flex justify-center">
+                    <img src="unnamed.png" alt="Police Care App Icon" class="w-52 h-52 rounded-full shadow-2xl object-contain">
+                </div>
+            </div>
+        </section>
+
+        <!-- Web Dictionary Teaser -->
+        <section class="py-16 bg-white border-t border-gray-100">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Learning" class="rounded-2xl shadow-xl grayscale hover:grayscale-0 transition duration-500">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold text-gray-900">คลังคำศัพท์ภาษามือ (ฉบับตำรวจ)</h2>
+                    <p class="text-gray-500 mb-6">
+                        ฐานข้อมูลคำศัพท์และประโยคจำเป็นสำหรับงานตำรวจกว่า 170 รายการ ครอบคลุมการสอบสวน การแจ้งความ และการช่วยเหลือฉุกเฉิน
+                    </p>
+                    <button onclick="showPage('dictionary')" class="bg-white border-2 border-police-red text-police-red px-8 py-3 rounded-xl font-bold hover:bg-police-red hover:text-white transition">
+                        เข้าใช้งานคลังคำศัพท์บนเว็บ
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========================================= -->
+    <!-- PAGE 2: WEB DICTIONARY (Data Focused)     -->
+    <!-- ========================================= -->
+    <main id="dictionary" class="page-section flex-grow bg-gray-50">
+        <!-- Search Header -->
+        <div class="bg-police-dark text-white py-10 shadow-lg relative overflow-hidden">
+            <div class="absolute inset-0 bg-police-red opacity-10" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 20px 20px;"></div>
+            <div class="container mx-auto px-6 relative z-10 text-center">
+                <h1 class="text-3xl font-bold mb-4">คลังคำศัพท์ภาษามือไทย</h1>
+                <p class="text-gray-400 mb-8 max-w-2xl mx-auto">รวบรวมคำศัพท์และประโยคสำหรับการปฏิบัติงานของเจ้าหน้าที่ตำรวจ</p>
+                
+                <div class="max-w-3xl mx-auto relative mb-8">
+                    <input type="text" id="searchInput" placeholder="พิมพ์คำศัพท์ที่ต้องการค้นหา (เช่น ขโมย, บัตรประชาชน)..." class="w-full pl-6 pr-16 py-4 rounded-full text-gray-800 shadow-xl focus:outline-none focus:ring-4 focus:ring-red-500/30" onkeyup="performSearch()">
+                    <button onclick="performSearch()" class="absolute right-2 top-2 bg-police-red text-white p-2.5 rounded-full hover:bg-red-700 transition">
+                        <i class="fa-solid fa-magnifying-glass w-6 h-6 flex items-center justify-center"></i>
+                    </button>
+                </div>
+
+                <!-- Tab Switcher -->
+                <div class="inline-flex bg-white/10 p-1 rounded-xl backdrop-blur-sm border border-white/20">
+                    <button onclick="switchTab('vocab')" id="tab-vocab" class="px-6 py-2 rounded-lg font-bold text-sm transition-all tab-active">
+                        <i class="fa-solid fa-book mr-2"></i> คำศัพท์ (120)
+                    </button>
+                    <button onclick="switchTab('sentences')" id="tab-sentences" class="px-6 py-2 rounded-lg font-bold text-sm transition-all text-white/70 hover:bg-white/10 hover:text-white">
+                        <i class="fa-solid fa-comments mr-2"></i> ประโยค (50)
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Container -->
+        <div class="container mx-auto px-6 py-12">
+            
+            <!-- VOCABULARY GRID -->
+            <div id="content-vocab" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <!-- Javascript will populate this -->
+            </div>
+
+            <!-- SENTENCES GRID -->
+            <div id="content-sentences" class="hidden grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Javascript will populate this -->
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- ========================================= -->
+    <!-- PAGE 3: SINGLE WORD PAGE                  -->
+    <!-- ========================================= -->
+    <main id="single" class="page-section flex-grow bg-white">
+        <!-- Breadcrumb / Top Nav -->
+        <div class="bg-gray-50 border-b border-gray-200 py-4">
+            <div class="container mx-auto px-6 text-sm text-gray-500">
+                <span class="cursor-pointer hover:text-police-red" onclick="showPage('landing')">หน้าหลัก</span> 
+                <span class="mx-2">/</span> 
+                <span class="cursor-pointer hover:text-police-red" onclick="showPage('dictionary')">คลังคำศัพท์</span>
+                <span class="mx-2">/</span> 
+                <span class="font-bold text-police-red">ขโมย (Theft)</span>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6 py-10 max-w-6xl">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                
+                <!-- Left: Video & Main Info -->
+                <div class="lg:col-span-8">
+                    <!-- Video Container -->
+                    <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-200 bg-black relative aspect-video group mb-8">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                             <div class="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center cursor-pointer hover:bg-police-red hover:text-white hover:scale-110 transition duration-300">
+                                <i class="fa-solid fa-play text-3xl ml-1 text-white"></i>
+                             </div>
+                        </div>
+                        <div class="absolute bottom-4 right-4">
+                            <span class="bg-black/50 text-white text-xs px-2 py-1 rounded backdrop-blur-sm">HD 1080p</span>
+                        </div>
+                    </div>
+
+                    <!-- Word Title & Definition -->
+                    <div class="mb-8">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="bg-red-100 text-police-red text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">หมวดอาชญากรรม</span>
+                            <span class="bg-gray-100 text-gray-500 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">ID: 0045</span>
+                        </div>
+                        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-2">ขโมย</h1>
+                        <h2 class="text-2xl text-gray-400 font-light mb-6">Theft / Steal</h2>
+                        
+                        <div class="p-6 bg-gray-50 rounded-xl border-l-4 border-police-red">
+                            <h3 class="text-lg font-bold text-gray-800 mb-2">ความหมาย</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                การเอาทรัพย์สินของผู้อื่นไปโดยทุจริต หรือโดยที่เจ้าของไม่อนุญาต เป็นความผิดทางอาญาฐานลักทรัพย์
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Police Context -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-user-shield text-police-red"></i> การใช้งานในงานตำรวจ
+                        </h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white border border-gray-200 p-4 rounded-xl shadow-sm hover:border-red-200 transition">
+                                <span class="text-xs font-bold text-gray-400 block mb-1">คำถามที่พบบ่อย 1</span>
+                                <p class="text-gray-800 font-medium">"ใครเป็นคน<span class="text-police-red">ขโมย</span>?"</p>
+                                <p class="text-xs text-gray-500 mt-1">Who stole it?</p>
+                            </div>
+                            <div class="bg-white border border-gray-200 p-4 rounded-xl shadow-sm hover:border-red-200 transition">
+                                <span class="text-xs font-bold text-gray-400 block mb-1">คำถามที่พบบ่อย 2</span>
+                                <p class="text-gray-800 font-medium">"ถูก<span class="text-police-red">ขโมย</span>เมื่อไหร่?"</p>
+                                <p class="text-xs text-gray-500 mt-1">When was it stolen?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Sidebar -->
+                <div class="lg:col-span-4 space-y-6">
+                    <!-- Actions -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                        <h4 class="font-bold text-gray-900 mb-4 text-sm uppercase">เครื่องมือ</h4>
+                        <div class="space-y-3">
+                            <button class="w-full flex items-center justify-center gap-2 bg-police-red text-white py-3 rounded-xl font-bold hover:bg-red-800 transition">
+                                <i class="fa-solid fa-print"></i> พิมพ์ข้อมูล
+                            </button>
+                            <button class="w-full flex items-center justify-center gap-2 bg-white border border-gray-200 text-gray-700 py-3 rounded-xl font-bold hover:bg-gray-50 transition">
+                                <i class="fa-solid fa-share-nodes"></i> แชร์หน้านี้
+                            </button>
+                            <button class="w-full flex items-center justify-center gap-2 bg-white border border-gray-200 text-gray-700 py-3 rounded-xl font-bold hover:bg-gray-50 transition">
+                                <i class="fa-regular fa-bookmark"></i> บันทึกรายการ
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Related Words -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                        <h4 class="font-bold text-gray-900 mb-4 text-sm uppercase">คำที่เกี่ยวข้อง</h4>
+                        <div class="space-y-4">
+                            <!-- Related 1 -->
+                            <div class="flex items-center gap-3 cursor-pointer group" onclick="alert('ไปหน้าคำศัพท์: ทรัพย์สิน')">
+                                <div class="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center text-gray-400 group-hover:bg-red-50 group-hover:text-police-red transition">
+                                    <i class="fa-solid fa-wallet"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-gray-800 group-hover:text-police-red transition">ทรัพย์สิน</h5>
+                                    <p class="text-xs text-gray-400">Property / Assets</p>
+                                </div>
+                            </div>
+                            <!-- Related 2 -->
+                            <div class="flex items-center gap-3 cursor-pointer group" onclick="alert('ไปหน้าคำศัพท์: ผู้ต้องหา')">
+                                <div class="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center text-gray-400 group-hover:bg-red-50 group-hover:text-police-red transition">
+                                    <i class="fa-solid fa-user-lock"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-gray-800 group-hover:text-police-red transition">ผู้ต้องหา</h5>
+                                    <p class="text-xs text-gray-400">Suspect</p>
+                                </div>
+                            </div>
+                            <!-- Related 3 -->
+                            <div class="flex items-center gap-3 cursor-pointer group" onclick="alert('ไปหน้าคำศัพท์: ตำรวจ')">
+                                <div class="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center text-gray-400 group-hover:bg-red-50 group-hover:text-police-red transition">
+                                    <i class="fa-solid fa-user-shield"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-gray-800 group-hover:text-police-red transition">ตำรวจ</h5>
+                                    <p class="text-xs text-gray-400">Police</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- ========================================= -->
+    <!-- PAGE 3: MANUAL (Static Guide)             -->
+    <!-- ========================================= -->
+    <main id="manual" class="page-section flex-grow bg-white">
+        <div class="bg-gray-50 py-12 border-b border-gray-200">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-3xl font-bold text-gray-900">คู่มือการใช้งาน</h1>
+                <p class="text-gray-500 mt-2">ขั้นตอนการแจ้งความผ่านแอปพลิเคชัน Police Care</p>
+            </div>
+        </div>
+        <div class="container mx-auto px-6 py-12 max-w-4xl text-center text-gray-500">
+            [เนื้อหาคู่มือการใช้งานเหมือนเวอร์ชันก่อนหน้า...]
+        </div>
+    </main>
+
+    <!-- ========================================= -->
+    <!-- FOOTER: Info & Contact                    -->
+    <!-- ========================================= -->
+    <footer class="bg-police-dark text-white pt-16 pb-8 border-t-4 border-police-red mt-auto">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <!-- Brand Info -->
+                <div class="md:col-span-1">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Emblem_of_the_Royal_Thai_Police.svg/1200px-Emblem_of_the_Royal_Thai_Police.svg.png" alt="RTP" class="h-10 w-auto grayscale">
+                        <span class="font-bold text-xl">POLICE CARE</span>
+                    </div>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        เว็บไซต์นี้จัดทำขึ้นเพื่อเป็นศูนย์ข้อมูลสนับสนุนการใช้งานแอปพลิเคชัน Police Care สำหรับผู้พิการทางการได้ยิน โดยความร่วมมือระหว่างสำนักงานตำรวจแห่งชาติและสมาคมคนหูหนวกแห่งประเทศไทย
+                    </p>
+                </div>
+                <!-- Contact Info -->
+                <div class="md:col-span-3 text-sm text-gray-400">
+                    <p>สำนักงานตำรวจแห่งชาติ ถนนพระรามที่ 1 แขวงปทุมวัน เขตปทุมวัน กรุงเทพมหานคร 10330</p>
+                    <p class="mt-2">โทรฉุกเฉิน: 191 | TTRS: 1414</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-xs text-gray-500">
+                &copy; 2024 Police Care Project. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Data Arrays
+        const vocabData = [
+            // อาชญากรรม (Crimes)
+            "ขโมย", "ปล้น", "วิ่งราว", "ฆ่า", "ทำร้ายร่างกาย", "ข่มขืน", "ยาเสพติด", "ยาบ้า", "ไอซ์", "กัญชา", 
+            "เมาแล้วขับ", "ชนแล้วหนี", "ฝ่าไฟแดง", "ไม่มีใบขับขี่", "ลักทรัพย์", "ฉ้อโกง", "หลอกลวง", "พนัน", "ค้ามนุษย์", "วางเพลิง",
+            // บุคคล (People)
+            "ตำรวจ", "ผู้ร้าย", "โจร", "พยาน", "ทนายความ", "ผู้พิพากษา", "ล่าม", "หมอ", "พยาบาล", "กู้ภัย",
+            "ผู้เสียหาย", "เจ้าทุกข์", "ร้อยเวร", "ผู้กำกับ", "เด็ก", "ผู้หญิง", "ผู้ชาย", "คนแก่", "คนพิการ", "คนแปลกหน้า",
+            // สถานที่ (Places)
+            "สถานีตำรวจ", "โรงพยาบาล", "ศาล", "คุก", "ห้องขัง", "บ้าน", "ที่ทำงาน", "โรงเรียน", "ธนาคาร", "ร้านทอง",
+            "ตลาด", "ห้างสรรพสินค้า", "ถนน", "ซอย", "ทางด่วน", "สี่แยก", "สะพานลอย", "ปั๊มน้ำมัน", "สวนสาธารณะ", "โรงแรม",
+            // วัตถุ/อาวุธ (Objects/Weapons)
+            "มีด", "ปืน", "ไม้", "ระเบิด", "สนับมือ", "โทรศัพท์", "กระเป๋าเงิน", "สร้อยคอ", "แหวน", "นาฬิกา",
+            "รถยนต์", "มอเตอร์ไซค์", "รถตู้", "รถเมล์", "รถพยาบาล", "ทะเบียนรถ", "บัตรประชาชน", "ใบขับขี่", "พาสปอร์ต", "กล้องวงจรปิด",
+            // กริยา/อาการ (Verbs/Conditions)
+            "หนี", "ซ่อน", "วิ่ง", "เดิน", "ขับรถ", "ตะโกน", "ร้องไห้", "กลัว", "โกรธ", "เมา",
+            "บาดเจ็บ", "เลือดออก", "สลบ", "เสียชีวิต", "ปวดหัว", "ปวดท้อง", "ขาหัก", "แขนหัก", "ถูกตี", "ถูกแทง",
+            // เวลา/สี (Time/Colors)
+            "เมื่อวาน", "วันนี้", "พรุ่งนี้", "ตอนเช้า", "ตอนเที่ยง", "ตอนเย็น", "กลางคืน", "สีแดง", "สีดำ", "สีขาว",
+            "สีน้ำเงิน", "สีเขียว", "สีเหลือง", "เสื้อลาย", "กางเกงขายาว", "ขาสั้น", "หมวกกันน็อค", "แว่นตา", "รอยสัก", "แผลเป็น",
+            // กฎหมาย/อื่นๆ (Legal/Misc)
+            "แจ้งความ", "ลงบันทึกประจำวัน", "จับกุม", "ประกันตัว", "ค่าปรับ", "ใบสั่ง", "เซ็นชื่อ", "ลายนิ้วมือ", "สอบปากคำ", "สารภาพ",
+            "ปฏิเสธ", "บริสุทธิ์", "คดีแพ่ง", "คดีอาญา", "หมายจับ", "ค้นตัว", "หลักฐาน", "กล้องหน้ารถ", "ยาแก้ปวด", "เบอร์โทร"
+        ];
+
+        const sentenceData = [
+            // ทักทาย/ระบุตัวตน (Greeting/ID)
+            "สวัสดีครับ มีอะไรให้ช่วยครับ?",
+            "คุณชื่ออะไร?",
+            "ขอดูบัตรประชาชนหน่อยครับ",
+            "บ้านอยู่ที่ไหน?",
+            "ขอเบอร์โทรศัพท์ติดต่อ",
+            "คุณเป็นผู้เสียหายใช่ไหม?",
+            "คุณเป็นพยานใช่ไหม?",
+            
+            // ข้อมูลเหตุการณ์ (Incident Info)
+            "เกิดเหตุอะไรขึ้น?",
+            "เหตุเกิดเมื่อไหร่? (กี่โมง)",
+            "เหตุเกิดที่ไหน?",
+            "เล่าเหตุการณ์ให้ฟังหน่อย",
+            "ใครเป็นคนทำ?",
+            "คนร้ายมากันกี่คน?",
+            "คนร้ายหนีไปทางไหน?",
+            "คนร้ายใช้ยานพาหนะอะไร?",
+            "จำทะเบียนรถคนร้ายได้ไหม?",
+            "คนร้ายใช้อาวุธไหม?",
+            "คนร้ายมีลักษณะอย่างไร? (อ้วน/ผอม/สูง/เตี้ย)",
+            "คนร้ายใส่เสื้อสีอะไร?",
+            
+            // ทรัพย์สิน/ความเสียหาย (Damage/Loss)
+            "มีทรัพย์สินอะไรหายไปบ้าง?",
+            "ทรัพย์สินราคาเท่าไหร่?",
+            "มีประกันภัยไหม?",
+            "รถของคุณเสียหายตรงไหน?",
+            "ขอดูใบขับขี่หน่อย",
+            "รถมีกล้องหน้ารถไหม?",
+            
+            // ร่างกาย/บาดเจ็บ (Injury)
+            "คุณบาดเจ็บตรงไหน?",
+            "เจ็บมากไหม?",
+            "ต้องการรถพยาบาลไหม?",
+            "มีเลือดออกไหม?",
+            "โดนทำร้ายด้วยอะไร?",
+            "เคยมีเรื่องกันมาก่อนไหม?",
+            
+            // ขั้นตอนกฎหมาย (Procedure)
+            "กรุณาเซ็นชื่อตรงนี้",
+            "ปั๊มลายนิ้วมือตรงนี้",
+            "นั่งรอสักครู่",
+            "ตำรวจกำลังไปตรวจสอบที่เกิดเหตุ",
+            "ต้องไปตรวจร่างกายที่โรงพยาบาล",
+            "คุณต้องการแจ้งความดำเนินคดีไหม?",
+            "หรือแค่ลงบันทึกประจำวัน?",
+            "คุณถูกจับข้อหา...",
+            "คุณมีสิทธิ์เรียกทนายความ",
+            "คุณให้การรับสารภาพหรือไม่?",
+            "ติดต่อญาติได้ไหม?",
+            "เรื่องนี้เป็นคดีแพ่ง (ตำรวจทำไม่ได้)",
+            "ใบแจ้งความนี้ใช้เป็นหลักฐานได้",
+            "เสร็จเรียบร้อยแล้ว กลับบ้านได้ครับ"
+        ];
+
+        // Functions
+        function switchTab(tab) {
+            const btnVocab = document.getElementById('tab-vocab');
+            const btnSentences = document.getElementById('tab-sentences');
+            const contentVocab = document.getElementById('content-vocab');
+            const contentSentences = document.getElementById('content-sentences');
+
+            if (tab === 'vocab') {
+                // Style
+                btnVocab.classList.add('tab-active');
+                btnVocab.classList.remove('text-white/70', 'hover:bg-white/10');
+                btnSentences.classList.remove('tab-active');
+                btnSentences.classList.add('text-white/70', 'hover:bg-white/10');
+                
+                // Content
+                contentVocab.classList.remove('hidden');
+                contentSentences.classList.add('hidden');
+            } else {
+                // Style
+                btnSentences.classList.add('tab-active');
+                btnSentences.classList.remove('text-white/70', 'hover:bg-white/10');
+                btnVocab.classList.remove('tab-active');
+                btnVocab.classList.add('text-white/70', 'hover:bg-white/10');
+
+                // Content
+                contentSentences.classList.remove('hidden');
+                contentVocab.classList.add('hidden');
+            }
+        }
+
+        function renderContent() {
+            // Render Vocab
+            const vocabContainer = document.getElementById('content-vocab');
+            let vocabHTML = '';
+            vocabData.forEach((word, index) => {
+                vocabHTML += `
+                <div onclick="showSingleWord('${word}')" class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 hover:border-police-red hover:shadow-md transition cursor-pointer text-center group">
+                    <div class="w-10 h-10 mx-auto bg-gray-50 rounded-full flex items-center justify-center text-gray-400 text-lg mb-2 group-hover:bg-red-50 group-hover:text-police-red transition">
+                        <i class="fa-solid fa-hand-holding-hand"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 text-sm">${word}</h3>
+                    <span class="text-[10px] text-gray-400 block mt-1">ID: ${1000 + index}</span>
+                </div>`;
+            });
+            vocabContainer.innerHTML = vocabHTML;
+
+            // Render Sentences
+            const sentenceContainer = document.getElementById('content-sentences');
+            let sentenceHTML = '';
+            sentenceData.forEach((sentence, index) => {
+                sentenceHTML += `
+                <div onclick="showSingleWord('${sentence}')" class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:border-police-red hover:bg-red-50 transition cursor-pointer group flex items-start gap-4">
+                    <div class="w-8 h-8 bg-police-red text-white rounded-lg flex-shrink-0 flex items-center justify-center font-bold text-sm shadow-sm mt-1">
+                        ${index + 1}
+                    </div>
+                    <div>
+                        <p class="font-bold text-gray-800 text-lg group-hover:text-police-red transition">"${sentence}"</p>
+                        <button class="mt-3 text-xs bg-gray-100 hover:bg-white text-gray-600 px-3 py-1 rounded-full border border-gray-200 flex items-center gap-2 transition">
+                            <i class="fa-solid fa-video"></i> ดูตัวอย่างท่ามือ
+                        </button>
+                    </div>
+                </div>`;
+            });
+            sentenceContainer.innerHTML = sentenceHTML;
+        }
+
+        function performSearch() {
+            try {
+                const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+                const activeTab = document.querySelector('.tab-active')?.id;
+                
+                if (!activeTab) {
+                    console.error('No active tab found');
+                    return;
+                }
+                
+                if (activeTab === 'tab-vocab') {
+                    const filteredVocab = vocabData.filter(word => 
+                        word.toLowerCase().includes(searchTerm)
+                    );
+                    renderFilteredVocab(filteredVocab);
+                } else {
+                    const filteredSentences = sentenceData.filter(sentence => 
+                        sentence.toLowerCase().includes(searchTerm)
+                    );
+                    renderFilteredSentences(filteredSentences);
+                }
+            } catch (error) {
+                console.error('Search error:', error);
+                alert('เกิดข้อผิดพลาดในการค้นหา กรุณาลองใหม่อีกครั้ง');
+            }
+        }
+
+        function renderFilteredVocab(filteredData) {
+            const vocabContainer = document.getElementById('content-vocab');
+            if (filteredData.length === 0) {
+                vocabContainer.innerHTML = '<div class="col-span-full text-center py-12 text-gray-500">ไม่พบคำศัพท์ที่ค้นหา</div>';
+                return;
+            }
+            
+            let vocabHTML = '';
+            filteredData.forEach((word, index) => {
+                const originalIndex = vocabData.indexOf(word);
+                vocabHTML += `
+                <div onclick="showSingleWord('${word}')" class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 hover:border-police-red hover:shadow-md transition cursor-pointer text-center group">
+                    <div class="w-10 h-10 mx-auto bg-gray-50 rounded-full flex items-center justify-center text-gray-400 text-lg mb-2 group-hover:bg-red-50 group-hover:text-police-red transition">
+                        <i class="fa-solid fa-hand-holding-hand"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 text-sm">${word}</h3>
+                    <span class="text-[10px] text-gray-400 block mt-1">ID: ${1000 + originalIndex}</span>
+                </div>`;
+            });
+            vocabContainer.innerHTML = vocabHTML;
+        }
+
+        function renderFilteredSentences(filteredData) {
+            const sentenceContainer = document.getElementById('content-sentences');
+            if (filteredData.length === 0) {
+                sentenceContainer.innerHTML = '<div class="col-span-full text-center py-12 text-gray-500">ไม่พบประโยคที่ค้นหา</div>';
+                return;
+            }
+            
+            let sentenceHTML = '';
+            filteredData.forEach((sentence, index) => {
+                const originalIndex = sentenceData.indexOf(sentence);
+                sentenceHTML += `
+                <div onclick="showSingleWord('${sentence}')" class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:border-police-red hover:bg-red-50 transition cursor-pointer group flex items-start gap-4">
+                    <div class="w-8 h-8 bg-police-red text-white rounded-lg flex-shrink-0 flex items-center justify-center font-bold text-sm shadow-sm mt-1">
+                        ${originalIndex + 1}
+                    </div>
+                    <div>
+                        <p class="font-bold text-gray-800 text-lg group-hover:text-police-red transition">"${sentence}"</p>
+                        <button class="mt-3 text-xs bg-gray-100 hover:bg-white text-gray-600 px-3 py-1 rounded-full border border-gray-200 flex items-center gap-2 transition">
+                            <i class="fa-solid fa-video"></i> ดูตัวอย่างท่ามือ
+                        </button>
+                    </div>
+                </div>`;
+            });
+            sentenceContainer.innerHTML = sentenceHTML;
+        }
+
+        function showSingleWord(word) {
+            try {
+                if (!word) {
+                    console.error('No word provided');
+                    return;
+                }
+                
+                // Update breadcrumb
+                const breadcrumb = document.querySelector('#single .font-bold.text-police-red');
+                if (breadcrumb) {
+                    breadcrumb.textContent = word;
+                }
+                
+                // Update page title
+                const titleElement = document.querySelector('#single h1');
+                if (titleElement) {
+                    titleElement.textContent = word;
+                }
+                
+                showPage('single');
+            } catch (error) {
+                console.error('Error showing single word:', error);
+                alert('เกิดข้อผิดพลาดในการแสดงข้อมูล กรุณาลองใหม่อีกครั้ง');
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        function showPage(pageId) {
+            try {
+                if (!pageId) {
+                    console.error('No page ID provided');
+                    return;
+                }
+                
+                const pageElement = document.getElementById(pageId);
+                if (!pageElement) {
+                    console.error('Page not found:', pageId);
+                    return;
+                }
+                
+                document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
+                pageElement.classList.add('active');
+                window.scrollTo(0, 0);
+                
+                // Close mobile menu when switching pages
+                const mobileMenu = document.getElementById('mobileMenu');
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            } catch (error) {
+                console.error('Error switching page:', error);
+                alert('เกิดข้อผิดพลาดในการเปลี่ยนหน้า กรุณาลองใหม่อีกครั้ง');
+            }
+        }
+
+        function callEmergency(number) {
+            if (confirm(`คุณต้องการโทรหมายเลข ${number} ใช่ไหม?`)) {
+                window.location.href = `tel:${number}`;
+            }
+        }
+
+        function callTTRS() {
+            if (confirm('คุณต้องการโทรหมายเลข 1414 สำหรับบริการล่ามภาษามือใช่ไหม?')) {
+                window.location.href = 'tel:1414';
+            }
+        }
+
+        function startSignLanguageReport() {
+            alert('ฟีเจอร์บันทึกวิดีโอภาษามือจะเปิดใช้งานในเวอร์ชันถัดไป');
+        }
+
+        function shareLocation() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'ตำแหน่งฉุกเฉิน',
+                    text: 'กรุณาช่วยเหลือหรือที่ตำแหน่งปัจจุบัน',
+                    url: window.location.href
+                });
+            } else {
+                alert('เบราว์เซอร์ของคุณไม่รองรับบริการแชร์ตำแหน่ง');
+            }
+        }
+
+        function addPhoto() {
+            alert('ฟีเจอร์ถ่ายรูปและอัปโหลดรูปภาพจะเปิดใช้งานในเวอร์ชันถัดไป');
+        }
+
+        function contactInterpreter() {
+            callTTRS();
+        }
+
+        // Init
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                renderContent();
+                console.log('Police Care app initialized successfully');
+            } catch (error) {
+                console.error('Initialization error:', error);
+                alert('เกิดข้อผิดพลาดในการโหลดข้อมูล กรุณารีเฟรชหน้าเว็บ');
+            }
+        });
+    </script>
+</body>
+</html>
