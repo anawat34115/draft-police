@@ -358,14 +358,10 @@
                 <div class="lg:col-span-8">
                     <!-- Video Container -->
                     <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-200 bg-black relative aspect-video group mb-8">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                             <div class="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center cursor-pointer hover:bg-police-red hover:text-white hover:scale-110 transition duration-300">
-                                <i class="fa-solid fa-play text-3xl ml-1 text-white"></i>
-                             </div>
-                        </div>
-                        <div class="absolute bottom-4 right-4">
-                            <span class="bg-black/50 text-white text-xs px-2 py-1 rounded backdrop-blur-sm">HD 1080p</span>
-                        </div>
+                        <video id="singleWordVideo" class="w-full h-full" controls>
+                            <source src="" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
 
                     <!-- Word Title & Definition -->
@@ -752,10 +748,38 @@
                     titleElement.textContent = word;
                 }
                 
+                // Update video source based on word
+                updateSingleWordVideo(word);
+                
                 showPage('single');
             } catch (error) {
                 console.error('Error showing single word:', error);
                 alert('เกิดข้อผิดพลาดในการแสดงข้อมูล กรุณาลองใหม่อีกครั้ง');
+            }
+        }
+
+        function updateSingleWordVideo(word) {
+            const video = document.getElementById('singleWordVideo');
+            if (!video) return;
+            
+            // Map words to video paths
+            const videoMap = {
+                'ขโมย': 'assets/videos/thief.mp4',
+                'ตำรวจ': 'assets/videos/police.mp4',
+                'ช่วย': 'assets/videos/help.mp4',
+                'ใช่': 'assets/videos/yes.mp4',
+                'ไม่ใช่': 'assets/videos/no.mp4',
+                'สวัสดี': 'assets/videos/hello.mp4'
+            };
+            
+            const videoPath = videoMap[word] || '';
+            
+            if (videoPath) {
+                video.src = videoPath;
+                video.load();
+                video.style.display = 'block';
+            } else {
+                video.style.display = 'none';
             }
         }
 
