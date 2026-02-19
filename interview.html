@@ -323,70 +323,39 @@
     <script>
         // 1. โครงสร้างข้อมูล (Data Structure)
         const SCENARIOS = {
-            theft: {
-                title: 'แจ้งเหตุลักทรัพย์',
-                icon: 'fa-mask',
+            documents: {
+                title: 'แจ้งความเอกสารหาย ทรัพย์สินหาย',
+                icon: 'fa-file-contract',
                 color: 'orange',
                 questions: [
                     { 
                         id: 1, 
-                        text: "คุณเห็นหน้าคนร้ายไหม?", 
-                        explain: "ท่ามือ: ชี้ไปที่ตา แล้วทำท่ามองหา",
-                        videoUrl: "videos/theft/saw_suspect.mp4"
+                        text: "มีเอกสารอะไรหายไปบ้าง?", 
+                        explain: "ท่ามือ: ทำท่าหายาว และชี้ไปที่เอกสาร",
+                        videoUrl: "assets/videos/documents_missing.mp4"
                     },
                     { 
                         id: 2, 
-                        text: "มีกล้องวงจรปิดไหม?", 
-                        explain: "ท่ามือ: ทำท่ากล้องวงจรด้วยนิ้วมือ",
-                        videoUrl: "videos/theft/has_cctv.mp4"
+                        text: "มีทรัพย์สินอะไรหายไปบ้าง?", 
+                        explain: "ท่ามือ: ทำท่าหายาว และชี้ไปที่ของ",
+                        videoUrl: "assets/videos/property_missing.mp4"
                     },
                     { 
                         id: 3, 
-                        text: "มีผู้บาดเจ็บไหม?", 
-                        explain: "ท่ามือ: ทำท่าบาดเจ็บ จับบริเวณที่เจ็บ",
-                        videoUrl: "videos/theft/is_injured.mp4"
+                        text: "เหตุการณ์เกิดขึ้นเมื่อไหร่?", 
+                        explain: "ท่ามือ: ชี้นาฬิกา และทำท่าถาม",
+                        videoUrl: "assets/videos/when_happened.mp4"
                     },
                     { 
                         id: 4, 
-                        text: "คนร้ายใช้อาวุธไหม?", 
-                        explain: "ท่ามือ: ทำท่าถืออาวุธ หรือทำท่าขู่อีกฝ่าย",
-                        videoUrl: "videos/theft/weapon_used.mp4"
-                    }
-                ]
-            },
-            accident: {
-                title: 'อุบัติเหตุรถชน',
-                icon: 'fa-car-burst',
-                color: 'blue',
-                questions: [
-                    { 
-                        id: 1, 
-                        text: "มีผู้บาดเจ็บไหม?", 
-                        explain: "ท่ามือ: ทำท่าบาดเจ็บ จับบริเวณที่เจ็บ",
-                        videoUrl: "videos/accident/has_injury.mp4"
-                    },
-                    { 
-                        id: 2, 
-                        text: "รถเสียหายหนักไหม?", 
-                        explain: "ท่ามือ: ทำท่ารถพัง หรือทำท่าชนแรง",
-                        videoUrl: "videos/accident/vehicle_damage.mp4"
-                    },
-                    { 
-                        id: 3, 
-                        text: "เป็นรถชนแล้วหนีไหม?", 
-                        explain: "ท่ามือ: ทำท่ารถวิ่งหนี",
-                        videoUrl: "videos/accident/hit_and_run.mp4"
-                    },
-                    { 
-                        id: 4, 
-                        text: "ต้องการรถพยาบาลไหม?", 
-                        explain: "ท่ามือ: ทำท่าเรียกรถพยาบาล",
-                        videoUrl: "videos/accident/need_ambulance.mp4"
+                        text: "มีพยานเห็นเหตุการณ์ไหม?", 
+                        explain: "ท่ามือ: ชี้รอบๆ และทำท่ามองเห็น",
+                        videoUrl: "assets/videos/any_witness.mp4"
                     }
                 ]
             },
             assault: {
-                title: 'การทำร้ายร่างกาย',
+                title: 'แจ้งความ กรณีโดนทำร้ายร่างกาย',
                 icon: 'fa-user-injured',
                 color: 'red',
                 questions: [
@@ -394,87 +363,118 @@
                         id: 1, 
                         text: "ต้องการความช่วยเหลือทางการแพทย์ไหม?", 
                         explain: "ท่ามือ: ทำท่าเรียกหมอ หรือจับบริเวณที่เจ็บ",
-                        videoUrl: "videos/assault/needs_medical.mp4"
+                        videoUrl: "assets/videos/need_medical_help.mp4"
                     },
                     { 
                         id: 2, 
                         text: "มีอาวุธประกอบภัยไหม?", 
                         explain: "ท่ามือ: ทำท่าถืออาวุธ หรือทำท่าขู่อีกฝ่าย",
-                        videoUrl: "videos/assault/weapon_involved.mp4"
+                        videoUrl: "assets/videos/weapon_involved.mp4"
                     },
                     { 
                         id: 3, 
                         text: "มีผู้ก่อเหตุหลายคนไหม?", 
                         explain: "ท่ามือ: ชี้นิ้วหลายๆ แล้วทำท่าทำร้าย",
-                        videoUrl: "videos/assault/multiple_attackers.mp4"
+                        videoUrl: "assets/videos/multiple_attackers.mp4"
                     },
                     { 
                         id: 4, 
                         text: "มีพยานเห็นเหตุการณ์ไหม?", 
-                        explain: "ท่ามือ: ชี้ไปรอบๆ แล้วทำท่ามองเห็น",
-                        videoUrl: "videos/assault/witness_present.mp4"
+                        explain: "ท่ามือ: ชี้ไปรอบๆ และทำท่ามองเห็น",
+                        videoUrl: "assets/videos/witness_present.mp4"
                     }
                 ]
             },
-            fire: {
-                title: 'ไฟไหม้',
-                icon: 'fa-fire',
-                color: 'red',
+            witness: {
+                title: 'คนพิการทางการได้ยินถูกเชิญมาให้ปากคำ เป็นพยานที่สถานีตำรวจ',
+                icon: 'fa-user-shield',
+                color: 'blue',
                 questions: [
                     { 
                         id: 1, 
-                        text: "มีคนติดอยู่ในอาคารไหม?", 
-                        explain: "ท่ามือ: ทำท่าคนติดอยู่ และทำท่าไฟ",
-                        videoUrl: "videos/fire/people_trapped.mp4"
+                        text: "เห็นเหตุการณ์เมื่อไหร่?", 
+                        explain: "ท่ามือ: ชี้นาฬิกา และทำท่ามองเห็น",
+                        videoUrl: "assets/videos/when_saw_incident.mp4"
                     },
                     { 
                         id: 2, 
-                        text: "เป็นอาคารพักอาศัยไหม?", 
-                        explain: "ท่ามือ: ทำท่าบ้าน และทำท่าไฟ",
-                        videoUrl: "videos/fire/building_type.mp4"
+                        text: "เห็นใครเป็นผู้ก่อเหตุ?", 
+                        explain: "ท่ามือ: ทำท่ามองคน และชี้ไปที่คนร้าย",
+                        videoUrl: "assets/videos/saw_suspect.mp4"
                     },
                     { 
                         id: 3, 
-                        text: "มีเสียงระเบิดไหม?", 
-                        explain: "ท่ามือ: ทำท่าระเบิด ปิดหูแล้วทำท่าเสียงดัง",
-                        videoUrl: "videos/fire/explosion.mp4"
+                        text: "ต้องการล่ามภาษามือไหม?", 
+                        explain: "ท่ามือ: ทำท่าล่ามภาษามือ",
+                        videoUrl: "assets/videos/need_interpreter.mp4"
                     },
                     { 
                         id: 4, 
-                        text: "ต้องการรถดับเพลิงไหม?", 
-                        explain: "ท่ามือ: ทำท่ารถดับเพลิง",
-                        videoUrl: "videos/fire/need_fire_truck.mp4"
+                        text: "เข้าใจสิทธิ์พยานไหม?", 
+                        explain: "ท่ามือ: ทำท่าถาม และทำท่าเข้าใจ",
+                        videoUrl: "assets/videos/understand_rights.mp4"
                     }
                 ]
             },
-            missing: {
-                title: 'บุคคลสูญหาย',
-                icon: 'fa-person-walking',
+            interpreter_national: {
+                title: 'ติดต่อล่ามภาษามือทั่วประเทศ',
+                icon: 'fa-hands',
+                color: 'green',
+                questions: [
+                    { 
+                        id: 1, 
+                        text: "ต้องการติดต่อล่ามในจังหวัดไหน?", 
+                        explain: "ท่ามือ: ทำท่าถาม และชี้ไปที่แผนที่",
+                        videoUrl: "assets/videos/which_province.mp4"
+                    },
+                    { 
+                        id: 2, 
+                        text: "ต้องการล่ามประเภทใด?", 
+                        explain: "ท่ามือ: ทำท่าเลือก และทำท่าล่าม",
+                        videoUrl: "assets/videos/interpreter_type.mp4"
+                    },
+                    { 
+                        id: 3, 
+                        text: "ต้องการใช้บริการเมื่อไหร่?", 
+                        explain: "ท่ามือ: ชี้นาฬิกา และทำท่าถาม",
+                        videoUrl: "assets/videos/when_needed.mp4"
+                    },
+                    { 
+                        id: 4, 
+                        text: "ติดต่อได้ทางไหนบ้าง?", 
+                        explain: "ท่ามือ: ทำท่าโทรศัพท์ และทำท่าติดต่อ",
+                        videoUrl: "assets/videos/contact_methods.mp4"
+                    }
+                ]
+            },
+            ttr_center: {
+                title: 'ติดต่อศูนย์ TTR',
+                icon: 'fa-phone-volume',
                 color: 'purple',
                 questions: [
                     { 
                         id: 1, 
-                        text: "เป็นเด็กสูญหายไหม?", 
-                        explain: "ท่ามือ: ทำท่าเด็ก และทำท่าหายไป",
-                        videoUrl: "videos/missing/child_missing.mp4"
+                        text: "ต้องการติดต่อศูนย์ TTR สาขาไหน?", 
+                        explain: "ท่ามือ: ทำท่าถาม และทำท่าเลือก",
+                        videoUrl: "assets/videos/ttr_branch.mp4"
                     },
                     { 
                         id: 2, 
-                        text: "มีโรคประจำตัวไหม?", 
-                        explain: "ท่ามือ: ทำท่าป่วย หรือทำท่ากินยา",
-                        videoUrl: "videos/missing/medical_condition.mp4"
+                        text: "ต้องการบริการประเภทใด?", 
+                        explain: "ท่ามือ: ทำท่าเลือก และทำท่าบริการ",
+                        videoUrl: "assets/videos/service_type.mp4"
                     },
                     { 
                         id: 3, 
-                        text: "เห็นครั้งสุดท้ายเมื่อเมื่อไหร่?", 
-                        explain: "ท่ามือ: ทำท่าดูนาฬิกา และทำท่ามองหา",
-                        videoUrl: "videos/missing/last_seen.mp4"
+                        text: "ติดต่อได้ทางไหนบ้าง?", 
+                        explain: "ท่ามือ: ทำท่าโทรศัพท์ และทำท่าติดต่อ",
+                        videoUrl: "assets/videos/ttr_contact.mp4"
                     },
                     { 
                         id: 4, 
-                        text: "มีความต้องการพิเศษไหม?", 
-                        explain: "ท่ามือ: ทำท่าต้องการความช่วยเหลือพิเศษ",
-                        videoUrl: "videos/missing/special_needs.mp4"
+                        text: "มีข้อมูลเพิ่มเติมไหม?", 
+                        explain: "ท่ามือ: ทำท่าถาม และทำท่ามีข้อมูล",
+                        videoUrl: "assets/videos/additional_info.mp4"
                     }
                 ]
             }
@@ -851,7 +851,7 @@
         }
 
         function showScenarioSelection() {
-            const selectionHTML = Object.entries(SCENARIOS).map(([key, scenario]) => `
+            const selectionHTML = Object.entries(SCENARIOS).slice(0, 3).map(([key, scenario]) => `
                 <button onclick="startReport('${key}')" class="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-police-red hover:bg-red-50 transition text-center group">
                     <div class="w-16 h-16 mx-auto bg-${scenario.color}-100 rounded-full flex items-center justify-center text-${scenario.color}-600 mb-4 group-hover:bg-${scenario.color}-200 transition">
                         <i class="fas ${scenario.icon} text-2xl"></i>
@@ -861,12 +861,41 @@
                 </button>
             `).join('');
             
+            // Add external links for the last 2 items
+            const externalLinksHTML = `
+                <button onclick="window.open('https://www.ttrs.or.th/', '_blank')" class="bg-green-50 border-2 border-green-200 rounded-xl p-6 hover:border-green-500 hover:bg-green-100 transition text-center group">
+                    <div class="w-16 h-16 mx-auto bg-green-100 rounded-full flex items-center justify-center text-green-600 mb-4 group-hover:bg-green-200 transition">
+                        <i class="fas fa-hands text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">ติดต่อล่ามภาษามือทั่วประเทศ</h3>
+                    <p class="text-sm text-gray-500 mb-2">เชื่อมต่อล่ามภาษามือทั่วประเทศ</p>
+                    <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">เปิดในหน้าใหม่</span>
+                </button>
+                
+                <button onclick="window.open('https://www.nadt.or.th/', '_blank')" class="bg-purple-50 border-2 border-purple-200 rounded-xl p-6 hover:border-purple-500 hover:bg-purple-100 transition text-center group">
+                    <div class="w-16 h-16 mx-auto bg-purple-100 rounded-full flex items-center justify-center text-purple-600 mb-4 group-hover:bg-purple-200 transition">
+                        <i class="fas fa-phone-volume text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">ติดต่อศูนย์ TTR</h3>
+                    <p class="text-sm text-gray-500 mb-2">ศูนย์บริการล่ามภาษามือโทรศัพท์</p>
+                    <span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded-full">เปิดในหน้าใหม่</span>
+                </button>
+            `;
+            
             document.getElementById('startScreen').innerHTML = `
                 <div class="bg-white rounded-2xl shadow-xl p-8">
                     <h1 class="text-3xl font-bold text-gray-900 mb-6 text-center">เลือกประเภทเหตุการณ์</h1>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                         ${selectionHTML}
                     </div>
+                    
+                    <div class="border-t border-gray-200 pt-6">
+                        <h2 class="text-xl font-bold text-gray-900 mb-4 text-center">บริการอื่นๆ</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            ${externalLinksHTML}
+                        </div>
+                    </div>
+                    
                     <div class="mt-8 text-center">
                         <button onclick="location.reload()" class="text-gray-500 hover:text-gray-700">
                             <i class="fas fa-arrow-left mr-2"></i> กลับหน้าหลัก

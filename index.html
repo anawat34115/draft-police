@@ -288,6 +288,233 @@
                 </div>
             </div>
         </section>
+
+        <!-- Contact Steps Section -->
+        <section class="py-16 bg-gradient-to-br from-blue-50 to-indigo-50 border-t border-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">📋 ขั้นตอนการติดต่อสถานีตำรวจสำหรับผู้พิการทางการได้ยิน</h2>
+                    <p class="text-gray-600 text-lg">คำแนะนำการติดต่อและแจ้งเหตุผ่านช่องทางต่างๆ</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-xl p-8 max-w-4xl mx-auto">
+                    <div class="text-center text-gray-500 py-12">
+                        <i class="fas fa-hourglass-half text-4xl mb-4 text-blue-500"></i>
+                        <p class="text-lg font-medium">กำลังรอข้อมูลจากลูกค้า...</p>
+                        <p class="text-sm mt-2">ข้อมูลขั้นตอนการติดต่อจะอัปเดตเร็วๆ นี้</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Activities Gallery Section -->
+        <section class="py-16 bg-white border-t border-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">📸 กิจกรรมสมาคมคนหูหนวก</h2>
+                    <p class="text-gray-600 text-lg">ภาพกิจกรรมและงานต่างๆ ของสมาคมคนหูหนวกแห่งประเทศไทย</p>
+                </div>
+                
+                <div class="bg-gray-50 rounded-2xl p-8 text-center">
+                    <div class="text-gray-500 py-12">
+                        <i class="fas fa-images text-4xl mb-4 text-purple-500"></i>
+                        <p class="text-lg font-medium">กำลังรอภาพกิจกรรมจากลูกค้า...</p>
+                        <p class="text-sm mt-2">แกลเลอรีภาพจะอัปเดตเร็วๆ นี้</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guidelines Tabs Section -->
+        <section class="py-16 bg-gradient-to-br from-green-50 to-emerald-50 border-t border-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">📖 คำแนะนำสำหรับผู้พิการทางการได้ยิน</h2>
+                    <p class="text-gray-600 text-lg">ข้อมูลและวิดีโอแนะนำการใช้งานระบบตำรวจ</p>
+                </div>
+                
+                <div class="max-w-4xl mx-auto">
+                    <!-- Tab Navigation -->
+                    <div class="flex flex-wrap justify-center gap-2 mb-8">
+                        <button onclick="showGuidelineTab('emergency')" class="guideline-tab active bg-police-red text-white px-6 py-3 rounded-lg font-bold transition">
+                            🚨 แจ้งเหตุฉุกเฉิน
+                        </button>
+                        <button onclick="showGuidelineTab('report')" class="guideline-tab bg-white border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-bold hover:border-police-red hover:text-police-red transition">
+                            📝 แจ้งความออนไลน์
+                        </button>
+                        <button onclick="showGuidelineTab('interpreter')" class="guideline-tab bg-white border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-bold hover:border-police-red hover:text-police-red transition">
+                            🤝 ติดต่อล่ามภาษามือ
+                        </button>
+                        <button onclick="showGuidelineTab('rights')" class="guideline-tab bg-white border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-bold hover:border-police-red hover:text-police-red transition">
+                            ⚖️ สิทธิ์ผู้พิการ
+                        </button>
+                    </div>
+                    
+                    <!-- Tab Content -->
+                    <div id="guidelineContent" class="bg-white rounded-2xl shadow-xl p-8">
+                        <!-- Emergency Tab -->
+                        <div id="emergency-tab" class="guideline-content">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-gray-900 mb-4">🚨 แจ้งเหตุฉุกเฉิน</h3>
+                                    <p class="text-gray-600 mb-6">วิธีการแจ้งเหตุฉุกเฉินสำหรับผู้พิการทางการได้ยิน</p>
+                                    
+                                    <div class="space-y-4">
+                                        <div class="flex items-start gap-3">
+                                            <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                                <span class="text-red-600 font-bold text-sm">1</span>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-bold text-gray-900">โทร 191</h4>
+                                                <p class="text-sm text-gray-600">โทรฉุกเฉินตำรวจ 24 ชั่วโมง</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start gap-3">
+                                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                                <span class="text-blue-600 font-bold text-sm">2</span>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-bold text-gray-900">โทร 1414</h4>
+                                                <p class="text-sm text-gray-600">ล่ามภาษามือโทรศัพท์ TTRS</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start gap-3">
+                                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                                <span class="text-green-600 font-bold text-sm">3</span>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-bold text-gray-900">แอป Police Care</h4>
+                                                <p class="text-sm text-gray-600">ใช้แอปแจ้งเหตุผ่านภาษามือ</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h4 class="font-bold text-gray-900 mb-4">📹 วิดีโอแนะนำ</h4>
+                                    <div class="bg-black rounded-xl aspect-video flex items-center justify-center">
+                                        <div class="text-center text-white">
+                                            <i class="fas fa-play-circle text-6xl mb-3 opacity-50"></i>
+                                            <p class="text-sm opacity-70">วิดีโอแนะนำการแจ้งเหตุฉุกเฉิน</p>
+                                            <p class="text-xs opacity-50 mt-2">คลิกเพื่อดูวิดีโอ</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Report Tab -->
+                        <div id="report-tab" class="guideline-content" style="display: none;">
+                            <div class="text-center">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-4">📝 แจ้งความออนไลน์</h3>
+                                <p class="text-gray-600 mb-6">วิธีการแจ้งความผ่านระบบออนไลน์สำหรับผู้พิการทางการได้ยิน</p>
+                                
+                                <div class="bg-gray-50 rounded-xl p-8 text-center">
+                                    <i class="fas fa-hourglass-half text-4xl mb-4 text-blue-500"></i>
+                                    <p class="text-lg font-medium">กำลังรอข้อมูลจากลูกค้า...</p>
+                                    <p class="text-sm mt-2">ข้อมูลการแจ้งความออนไลน์จะอัปเดตเร็วๆ นี้</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Interpreter Tab -->
+                        <div id="interpreter-tab" class="guideline-content" style="display: none;">
+                            <div class="text-center">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-4">🤝 ติดต่อล่ามภาษามือ</h3>
+                                <p class="text-gray-600 mb-6">ข้อมูลการติดต่อล่ามภาษามือ TTRS และขั้นตอนการนัดหมาย</p>
+                                
+                                <div class="bg-gray-50 rounded-xl p-8 text-center">
+                                    <i class="fas fa-hourglass-half text-4xl mb-4 text-blue-500"></i>
+                                    <p class="text-lg font-medium">กำลังรอข้อมูลจากลูกค้า...</p>
+                                    <p class="text-sm mt-2">ข้อมูลการติดต่อล่ามจะอัปเดตเร็วๆ นี้</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Rights Tab -->
+                        <div id="rights-tab" class="guideline-content" style="display: none;">
+                            <div class="text-center">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-4">⚖️ สิทธิ์ผู้พิการ</h3>
+                                <p class="text-gray-600 mb-6">สิทธิ์และเสรีภาพของผู้พิการทางการได้ยินตามกฎหมาย</p>
+                                
+                                <div class="bg-gray-50 rounded-xl p-8 text-center">
+                                    <i class="fas fa-hourglass-half text-4xl mb-4 text-blue-500"></i>
+                                    <p class="text-lg font-medium">กำลังรอข้อมูลจากลูกค้า...</p>
+                                    <p class="text-sm mt-2">ข้อมูลสิทธิ์ผู้พิการจะอัปเดตเร็วๆ นี้</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Important Organizations Section -->
+        <section class="py-16 bg-white border-t border-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">🏛️ หน่วยงานที่สำคัญ</h2>
+                    <p class="text-gray-600 text-lg">องค์กรและหน่วยงานที่ให้การสนับสนุนผู้พิการทางการได้ยิน</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <!-- Royal Thai Police Logo -->
+                    <div class="bg-gray-50 rounded-2xl p-8 text-center">
+                        <div class="w-24 h-24 mx-auto mb-4 bg-blue-900 rounded-full flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-white text-4xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">สำนักงานตำรวจแห่งชาติ</h3>
+                        <p class="text-gray-600">Royal Thai Police</p>
+                        <p class="text-sm text-gray-500 mt-2">หน่วยงานหลักในการบังคับใช้กฎหมาย</p>
+                    </div>
+                    
+                    <!-- NADT Logo -->
+                    <div class="bg-gray-50 rounded-2xl p-8 text-center">
+                        <div class="w-24 h-24 mx-auto mb-4 bg-purple-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-universal-access text-white text-4xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">สถาบันส่งเสริมฯพฒน.ผด.</h3>
+                        <p class="text-gray-600">NADT</p>
+                        <p class="text-sm text-gray-500 mt-2">สนับสนุนและพัฒนาคุณภาพชีวิตผู้พิการ</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sponsors Section -->
+        <section class="py-16 bg-gradient-to-br from-yellow-50 to-orange-50 border-t border-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">🤝 ผู้สนับสนุน</h2>
+                    <p class="text-gray-600 text-lg">องค์กรและบริษัทที่ให้การสนับสนุนโครงการ Police Care</p>
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="https://www.kkummit.com/" target="_blank" class="bg-white rounded-lg shadow-xl p-6 text-center transition duration-300 ease-in-out hover:scale-105">
+                        <img src="assets/clients/kkummit.png" alt="KKUMMIT" class="w-24 h-24 mx-auto mb-4">
+                        <p class="text-lg font-medium">KKUMMIT</p>
+                    </a>
+                    <a href="https://www.saharacorp.com/th/" target="_blank" class="bg-white rounded-lg shadow-xl p-6 text-center transition duration-300 ease-in-out hover:scale-105">
+                        <img src="assets/clients/sahara.png" alt="SAHARA" class="w-24 h-24 mx-auto mb-4">
+                        <p class="text-lg font-medium">SAHARA</p>
+                    </a>
+                    <a href="https://www.nationfone.com/th/" target="_blank" class="bg-white rounded-lg shadow-xl p-6 text-center transition duration-300 ease-in-out hover:scale-105">
+                        <img src="assets/clients/nationfone.png" alt="NATIONFONE" class="w-24 h-24 mx-auto mb-4">
+                        <p class="text-lg font-medium">NATIONFONE</p>
+                    </a>
+                    <a href="https://www.mobifone.com/" target="_blank" class="bg-white rounded-lg shadow-xl p-6 text-center transition duration-300 ease-in-out hover:scale-105">
+                        <img src="assets/clients/mobifone.png" alt="MOBIFONE" class="w-24 h-24 mx-auto mb-4">
+                        <p class="text-lg font-medium">MOBIFONE</p>
+                    </a>
+                    <a href="https://www.telenor.com/th/" target="_blank" class="bg-white rounded-lg shadow-xl p-6 text-center transition duration-300 ease-in-out hover:scale-105">
+                        <img src="assets/clients/telenor.png" alt="TELERNOR" class="w-24 h-24 mx-auto mb-4">
+                        <p class="text-lg font-medium">TELERNOR</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
     </main>
 
     <!-- ========================================= -->
@@ -494,8 +721,12 @@
                 </div>
                 <!-- Contact Info -->
                 <div class="md:col-span-3 text-sm text-gray-400">
-                    <p>สำนักงานตำรวจแห่งชาติ ถนนพระรามที่ 1 แขวงปทุมวัน เขตปทุมวัน กรุงเทพมหานคร 10330</p>
-                    <p class="mt-2">โทรฉุกเฉิน: 191 | TTRS: 1414</p>
+                    <p><strong>ติดต่อเรา</strong></p>
+                    <p>คณะสังคมศาสตร์ โครงการบริการตำรวจ</p>
+                    <p>90 ม.7 ต.ลำพยา อ.ลำพยา จ.นครปฐม 73110</p>
+                    <p>โทร 034-311109</p>
+                    <p>อีเมล์: admin@social-rpca.org</p>
+                    <p>LINE: @ssrpca</p>
                 </div>
             </div>
             <div class="border-t border-gray-700 pt-8 text-center text-xs text-gray-500">
@@ -813,6 +1044,47 @@
             } catch (error) {
                 console.error('Error switching page:', error);
                 alert('เกิดข้อผิดพลาดในการเปลี่ยนหน้า กรุณาลองใหม่อีกครั้ง');
+            }
+        }
+
+        function showGuidelineTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.guideline-content').forEach(tab => {
+                tab.style.display = 'none';
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.guideline-tab').forEach(tab => {
+                tab.classList.remove('bg-police-red', 'text-white');
+                tab.classList.add('bg-white', 'border-2', 'border-gray-300', 'text-gray-700');
+            });
+            
+            // Show selected tab content
+            const selectedTab = document.getElementById(tabName + '-tab');
+            if (selectedTab) {
+                selectedTab.style.display = 'block';
+            }
+            
+            // Add active class to selected tab button
+            const activeTabButton = document.querySelector(`[onclick="showGuidelineTab('${tabName}')"]`);
+            if (activeTabButton) {
+                activeTabButton.classList.remove('bg-white', 'border-2', 'border-gray-300', 'text-gray-700');
+                activeTabButton.classList.add('bg-police-red', 'text-white');
+            }
+            
+            // If tab doesn't exist, create placeholder content
+            if (!selectedTab) {
+                const contentDiv = document.getElementById('guidelineContent');
+                const placeholderHTML = `
+                    <div id="${tabName}-tab" class="guideline-content">
+                        <div class="text-center text-gray-500 py-12">
+                            <i class="fas fa-hourglass-half text-4xl mb-4 text-blue-500"></i>
+                            <p class="text-lg font-medium">กำลังรอข้อมูลจากลูกค้า...</p>
+                            <p class="text-sm mt-2">เนื้อหาสำหรับแท็บนี้จะอัปเดตเร็วๆ นี้</p>
+                        </div>
+                    </div>
+                `;
+                contentDiv.innerHTML = placeholderHTML;
             }
         }
 
