@@ -530,8 +530,16 @@
             document.getElementById('currentQuestion').textContent = question.text;
             document.getElementById('questionSubtext').textContent = 'กรุณาตอบด้วยท่ามือ หรือกดปุ่มด้านล่าง';
             
-            // (ในระบบจริง) อัปเดต Source ของวิดีโอ
-            // updateVideo(question.videoUrl);
+            // อัปเดต Source ของวิดีโอ (ใช้ไฟล์จริง)
+            const videoElement = document.querySelector('.video-placeholder');
+            if (videoElement && question.videoUrl) {
+                videoElement.innerHTML = `
+                    <video id="interviewVideo" class="w-full h-full object-cover" controls autoplay muted>
+                        <source src="${question.videoUrl}" type="video/mp4">
+                        <p class="text-white">Your browser does not support the video tag.</p>
+                    </video>
+                `;
+            }
             
             // เพิ่ม animation
             document.getElementById('currentQuestion').parentElement.classList.add('fade-in');

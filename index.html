@@ -459,13 +459,15 @@
 
     <!-- SCRIPTS -->
     <script>
-        // Data Arrays
         const vocabData = [
+            { word: "ตำรวจ", video: "videos/vocabulary/police.mp4" },
+            { word: "ช่วยเหลือ", video: "videos/vocabulary/help.mp4" },
+            { word: "ฉุกเฉิน", video: "videos/vocabulary/emergency.mp4" },
             // อาชญากรรม (Crimes)
             "ขโมย", "ปล้น", "วิ่งราว", "ฆ่า", "ทำร้ายร่างกาย", "ข่มขืน", "ยาเสพติด", "ยาบ้า", "ไอซ์", "กัญชา", 
             "เมาแล้วขับ", "ชนแล้วหนี", "ฝ่าไฟแดง", "ไม่มีใบขับขี่", "ลักทรัพย์", "ฉ้อโกง", "หลอกลวง", "พนัน", "ค้ามนุษย์", "วางเพลิง",
             // บุคคล (People)
-            "ตำรวจ", "ผู้ร้าย", "โจร", "พยาน", "ทนายความ", "ผู้พิพากษา", "ล่าม", "หมอ", "พยาบาล", "กู้ภัย",
+            "ผู้ร้าย", "โจร", "พยาน", "ทนายความ", "ผู้พิพากษา", "ล่าม", "หมอ", "พยาบาล", "กู้ภัย",
             "ผู้เสียหาย", "เจ้าทุกข์", "ร้อยเวร", "ผู้กำกับ", "เด็ก", "ผู้หญิง", "ผู้ชาย", "คนแก่", "คนพิการ", "คนแปลกหน้า",
             // สถานที่ (Places)
             "สถานีตำรวจ", "โรงพยาบาล", "ศาล", "คุก", "ห้องขัง", "บ้าน", "ที่ทำงาน", "โรงเรียน", "ธนาคาร", "ร้านทอง",
@@ -485,6 +487,8 @@
         ];
 
         const sentenceData = [
+            { sentence: "โทรตำรวจ", video: "videos/sentences/call_police.mp4" },
+            { sentence: "ต้องการความช่วยเหลือ", video: "videos/sentences/need_help.mp4" },
             // ทักทาย/ระบุตัวตน (Greeting/ID)
             "สวัสดีครับ มีอะไรให้ช่วยครับ?",
             "คุณชื่ออะไร?",
@@ -575,11 +579,13 @@
             // Render Vocab
             const vocabContainer = document.getElementById('content-vocab');
             let vocabHTML = '';
-            vocabData.forEach((word, index) => {
+            vocabData.forEach((item, index) => {
+                const word = typeof item === 'string' ? item : item.word;
+                const hasVideo = typeof item === 'object' && item.video;
                 vocabHTML += `
-                <div onclick="showSingleWord('${word}')" class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 hover:border-police-red hover:shadow-md transition cursor-pointer text-center group">
+                <div onclick="showSingleWord('${word}'${hasVideo ? `, '${item.video}'` : ''})" class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 hover:border-police-red hover:shadow-md transition cursor-pointer text-center group">
                     <div class="w-10 h-10 mx-auto bg-gray-50 rounded-full flex items-center justify-center text-gray-400 text-lg mb-2 group-hover:bg-red-50 group-hover:text-police-red transition">
-                        <i class="fa-solid fa-hand-holding-hand"></i>
+                        <i class="fa-solid fa-${hasVideo ? 'video' : 'hand-holding-hand'}"></i>
                     </div>
                     <h3 class="font-bold text-gray-800 text-sm">${word}</h3>
                     <span class="text-[10px] text-gray-400 block mt-1">ID: ${1000 + index}</span>
@@ -590,18 +596,16 @@
             // Render Sentences
             const sentenceContainer = document.getElementById('content-sentences');
             let sentenceHTML = '';
-            sentenceData.forEach((sentence, index) => {
+            sentenceData.forEach((item, index) => {
+                const sentence = typeof item === 'string' ? item : item.sentence;
+                const hasVideo = typeof item === 'object' && item.video;
                 sentenceHTML += `
-                <div onclick="showSingleWord('${sentence}')" class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:border-police-red hover:bg-red-50 transition cursor-pointer group flex items-start gap-4">
-                    <div class="w-8 h-8 bg-police-red text-white rounded-lg flex-shrink-0 flex items-center justify-center font-bold text-sm shadow-sm mt-1">
-                        ${index + 1}
+                <div onclick="showSingleSentence('${sentence}'${hasVideo ? `, '${item.video}'` : ''})" class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 hover:border-police-red hover:shadow-md transition cursor-pointer text-center group">
+                    <div class="w-10 h-10 mx-auto bg-gray-50 rounded-full flex items-center justify-center text-gray-400 text-lg mb-2 group-hover:bg-red-50 group-hover:text-police-red transition">
+                        <i class="fa-solid fa-${hasVideo ? 'video' : 'comments'}"></i>
                     </div>
-                    <div>
-                        <p class="font-bold text-gray-800 text-lg group-hover:text-police-red transition">"${sentence}"</p>
-                        <button class="mt-3 text-xs bg-gray-100 hover:bg-white text-gray-600 px-3 py-1 rounded-full border border-gray-200 flex items-center gap-2 transition">
-                            <i class="fa-solid fa-video"></i> ดูตัวอย่างท่ามือ
-                        </button>
-                    </div>
+                    <h3 class="font-bold text-gray-800 text-sm">${sentence}</h3>
+                    <span class="text-[10px] text-gray-400 block mt-1">ID: ${2000 + index}</span>
                 </div>`;
             });
             sentenceContainer.innerHTML = sentenceHTML;
@@ -618,14 +622,16 @@
                 }
                 
                 if (activeTab === 'tab-vocab') {
-                    const filteredVocab = vocabData.filter(word => 
-                        word.toLowerCase().includes(searchTerm)
-                    );
+                    const filteredVocab = vocabData.filter(item => {
+                        const word = typeof item === 'string' ? item : item.word;
+                        return word.toLowerCase().includes(searchTerm);
+                    });
                     renderFilteredVocab(filteredVocab);
                 } else {
-                    const filteredSentences = sentenceData.filter(sentence => 
-                        sentence.toLowerCase().includes(searchTerm)
-                    );
+                    const filteredSentences = sentenceData.filter(item => {
+                        const sentence = typeof item === 'string' ? item : item.sentence;
+                        return sentence.toLowerCase().includes(searchTerm);
+                    });
                     renderFilteredSentences(filteredSentences);
                 }
             } catch (error) {
@@ -682,7 +688,7 @@
             sentenceContainer.innerHTML = sentenceHTML;
         }
 
-        function showSingleWord(word) {
+        function showSingleWord(word, videoUrl = null) {
             try {
                 if (!word) {
                     console.error('No word provided');
@@ -701,9 +707,79 @@
                     titleElement.textContent = word;
                 }
                 
+                // Update video section if videoUrl is provided
+                const videoSection = document.querySelector('#single .bg-black.rounded-lg');
+                if (videoSection) {
+                    if (videoUrl) {
+                        videoSection.innerHTML = `
+                            <video class="w-full h-full object-cover rounded-lg" controls autoplay muted>
+                                <source src="${videoUrl}" type="video/mp4">
+                                <p class="text-white">Your browser does not support the video tag.</p>
+                            </video>
+                        `;
+                    } else {
+                        videoSection.innerHTML = `
+                            <div class="w-full h-full bg-gray-900 rounded-lg flex items-center justify-center">
+                                <div class="text-center text-white">
+                                    <i class="fas fa-hand-holding-hand text-6xl mb-3 opacity-50"></i>
+                                    <p class="text-sm opacity-70">ไม่มีวิดีโอสำหรับคำนี้</p>
+                                </div>
+                            </div>
+                        `;
+                    }
+                }
+                
                 showPage('single');
             } catch (error) {
                 console.error('Error showing single word:', error);
+                alert('เกิดข้อผิดพลาดในการแสดงข้อมูล กรุณาลองใหม่อีกครั้ง');
+            }
+        }
+
+        function showSingleSentence(sentence, videoUrl = null) {
+            try {
+                if (!sentence) {
+                    console.error('No sentence provided');
+                    return;
+                }
+                
+                // Update breadcrumb
+                const breadcrumb = document.querySelector('#single .font-bold.text-police-red');
+                if (breadcrumb) {
+                    breadcrumb.textContent = sentence;
+                }
+                
+                // Update page title
+                const titleElement = document.querySelector('#single h1');
+                if (titleElement) {
+                    titleElement.textContent = sentence;
+                }
+                
+                // Update video section if videoUrl is provided
+                const videoSection = document.querySelector('#single .bg-black.rounded-lg');
+                if (videoSection) {
+                    if (videoUrl) {
+                        videoSection.innerHTML = `
+                            <video class="w-full h-full object-cover rounded-lg" controls autoplay muted>
+                                <source src="${videoUrl}" type="video/mp4">
+                                <p class="text-white">Your browser does not support the video tag.</p>
+                            </video>
+                        `;
+                    } else {
+                        videoSection.innerHTML = `
+                            <div class="w-full h-full bg-gray-900 rounded-lg flex items-center justify-center">
+                                <div class="text-center text-white">
+                                    <i class="fas fa-comments text-6xl mb-3 opacity-50"></i>
+                                    <p class="text-sm opacity-70">ไม่มีวิดีโอสำหรับประโยคนี้</p>
+                                </div>
+                            </div>
+                        `;
+                    }
+                }
+                
+                showPage('single');
+            } catch (error) {
+                console.error('Error showing single sentence:', error);
                 alert('เกิดข้อผิดพลาดในการแสดงข้อมูล กรุณาลองใหม่อีกครั้ง');
             }
         }
